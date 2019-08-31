@@ -3,8 +3,8 @@
 <h4>Dynamic Reactive Form In Angular</h4>
 <form [formGroup]="form">
   <div class="form-group">
-    <label for="usr">Age:</label>
-    <input type="text" class="form-control" formControlName="age">
+    <label for="usr">{{fieldLable}}:</label>
+    <input type="text" class="form-control" [formControlName]="fieldName">
   </div>
 </form>
 

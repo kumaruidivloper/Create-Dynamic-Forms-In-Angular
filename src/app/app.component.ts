@@ -9,11 +9,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class AppComponent implements OnInit {
   public title = 'Create-Dynamic-Forms-In-Angular';
 
-  form: FormGroup;
+  public form: FormGroup;
+  public fieldLable = 'FirstName';
+  public fieldName = 'firstname';
+  public fieldValue = 'Kumar';
 
   ngOnInit() {
     this.form = new FormGroup({
-      age: new FormControl('32')
+      [this.fieldName]: new FormControl(this.fieldValue)
     });
   }
 }
