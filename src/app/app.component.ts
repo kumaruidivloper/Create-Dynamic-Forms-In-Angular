@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      firstname: new FormControl('Kumar')
+      age: new FormControl('32')
     });
   }
 }
