@@ -1,39 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   public title = 'Create-Dynamic-Forms-In-Angular';
 
-  public form: FormGroup;
-  // public fieldLable = 'Age';
-  // public fieldName = 'age';
-  // public fieldValue = '30';
-
-  // More number of Fields
   public person = {
-    firstname: 'Kumar',
-    surname: 'shan',
-    age: 30,
-    twitter: '@KumarShan'
-  };
-
-  personProps = [];
-
-  ngOnInit() {
-    const formDataObj = {};
-    for (const prop of Object.keys(this.person)) {
-        formDataObj[prop] = new FormControl(this.person[prop]);
-        this.personProps.push(prop);
+    firstname: {
+      label: 'FirstName',
+      value: 'Kumar',
+      type: 'text'
+    },
+    surname: {
+      label: 'SurName',
+      value: 'Shan',
+      type: 'text'
+    },
+    age: {
+      label: 'Age',
+      value: 30,
+      type: 'number'
+    },
+    twitter: {
+      label: 'Twitter',
+      value: '@KumarShan',
+      type: 'text'
     }
-    // this.form = new FormGroup({
-    //   [this.fieldName]: new FormControl(this.fieldValue)
-    // });
-
-    this.form = new FormGroup(formDataObj);
-  }
+  };
 }

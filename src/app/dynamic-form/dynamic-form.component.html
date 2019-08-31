@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+  <!-- <div class="form-group">
+    <label for="usr">{{fieldLable}}:</label>
+    <input type="text" class="form-control" [formControlName]="fieldName">
+  </div> -->
+
+  <!--Dynamic Form-->
+  <div class="form-group" *ngFor="let prop of personProps">
+    <label for="usr">{{prop.label}}:</label>
+    <input [type]="prop.type" class="form-control" [formControlName]="prop.key">
+  </div>
+</form>
+
+<pre>{{ form.value | json }}</pre>
