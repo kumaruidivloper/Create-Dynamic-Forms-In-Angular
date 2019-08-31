@@ -10,9 +10,9 @@ export class AppComponent implements OnInit {
   public title = 'Create-Dynamic-Forms-In-Angular';
 
   public form: FormGroup;
-  public fieldLable = 'FirstName';
-  public fieldName = 'firstname';
-  public fieldValue = 'Kumar';
+  public fieldLable = 'Age';
+  public fieldName = 'age';
+  public fieldValue = '30';
 
   ngOnInit() {
     this.form = new FormGroup({
