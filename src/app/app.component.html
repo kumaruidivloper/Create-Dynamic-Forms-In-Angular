@@ -2,9 +2,15 @@
 <div class="container">
 <h4>Dynamic Reactive Form In Angular</h4>
 <form [formGroup]="form">
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="usr">{{fieldLable}}:</label>
     <input type="text" class="form-control" [formControlName]="fieldName">
+  </div> -->
+
+  <!--Dynamic Form-->
+  <div class="form-group" *ngFor="let prop of personProps">
+    <label for="usr">{{prop | titlecase}}:</label>
+    <input type="text" class="form-control" [formControlName]="prop">
   </div>
 </form>
 
