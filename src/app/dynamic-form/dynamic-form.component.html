@@ -7,7 +7,15 @@
   <!--Dynamic Form-->
   <div class="form-group" *ngFor="let prop of personProps">
     <label for="usr">{{prop.label}}:</label>
-    <input [type]="prop.type" class="form-control" [formControlName]="prop.key">
+    <div [ngSwitch]="prop.type">
+      <input *ngSwitchCase="'text'" [type]="prop.type" class="form-control" [formControlName]="prop.key">
+      <input *ngSwitchCase="'number'" [type]="prop.type" class="form-control" [formControlName]="prop.key">
+      <select *ngSwitchCase="'select'" class="form-control" [formControlName]="prop.key">
+        <option *ngFor="let option of prop.options" [value]="option.value">
+          {{option.label}}
+        </option>
+      </select>
+    </div>
   </div>
 </form>
 

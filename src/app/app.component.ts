@@ -34,6 +34,30 @@ export class AppComponent implements OnInit {
       label: 'Twitter',
       value: '@KumarShan',
       type: 'text'
+    },
+    city: {
+      label: 'City',
+      value: 'NY',
+      type: 'select',
+      options: [
+        { label: '(choose one)', value: ''},
+        { label: 'New York', value: 'NY'},
+        { label: 'Los Angeles', value: 'LA'},
+        { label: 'Singapore', value: 'SG'},
+        { label: 'Sydney', value: 'SYD'}
+      ]
+    },
+    country: {
+      label: 'Country',
+      value: 'US',
+      type: 'select',
+      options: [
+        { label: '(choose one)', value: ''},
+        { label: 'India', value: 'IND'},
+        { label: 'United States', value: 'US'},
+        { label: 'Australia', value: 'AUS'},
+        { label: 'Singapore', value: 'SG'}
+      ]
     }
   };
 
