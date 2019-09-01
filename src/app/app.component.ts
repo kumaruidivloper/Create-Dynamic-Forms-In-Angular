@@ -18,7 +18,10 @@ export class AppComponent implements OnInit {
     firstname: {
       label: 'FirstName',
       value: 'Kumar',
-      type: 'text'
+      type: 'text',
+      validators: {
+        required: true
+      }
     },
     surname: {
       label: 'SurName',
@@ -37,7 +40,10 @@ export class AppComponent implements OnInit {
     age: {
       label: 'Age',
       value: 30,
-      type: 'number'
+      type: 'number',
+      validators: {
+        min: 18
+      }
     },
     twitter: {
       label: 'Twitter',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PersonService } from '../service/person.service';
 
 @Component({
@@ -9,7 +9,6 @@ import { PersonService } from '../service/person.service';
 })
 export class DynamicFormComponent implements OnInit {
   public form: FormGroup;
-  public personsService: any;
   @Input() formDataObj;
   // public fieldLable = 'Age';
   // public fieldName = 'age';
@@ -23,13 +22,12 @@ export class DynamicFormComponent implements OnInit {
   constructor(private personService: PersonService) { }
 
   ngOnInit() {
-    this.loadContacts();
     const formDataObj = {};
     console.log(formDataObj);
       console.log(this.formDataObj);
       for (const prop of Object.keys(this.formDataObj)) {
         console.log(prop);
-          formDataObj[prop] = new FormControl(this.formDataObj[prop].value);
+          formDataObj[prop] = new FormControl(this.formDataObj[prop].value, this.mapValidator(this.formDataObj[prop].validators));
         /*
           {
             key: firstname,
@@ -51,11 +49,17 @@ export class DynamicFormComponent implements OnInit {
     this.form = new FormGroup(formDataObj);
   }
 
-  loadContacts() {
-    // console.log(this.person);
-    this.personService.getPersonForm().subscribe(data => {
-        this.personsService = data;
-        console.log(this.personsService);
-    });
+  mapValidator(validators) {
+    if (validators) {
+      return Object.keys(validators).map(validationType => {
+        if (validationType === 'required') {
+          return Validators.required;
+        } else if (validationType === 'min') {
+          return Validators.min(validators[validationType]);
+        }
+      });
+    } else {
+      return [];
+    }
   }
 }
