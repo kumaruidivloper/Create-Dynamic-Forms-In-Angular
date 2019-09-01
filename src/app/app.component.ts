@@ -25,6 +25,15 @@ export class AppComponent implements OnInit {
       value: 'Shan',
       type: 'text'
     },
+    gender: {
+      label: 'Gender',
+      value: 'F',
+      type: 'radio',
+      options: [
+        { label: 'Male', value: 'M'},
+        { label: 'Female', value: 'F'},
+      ]
+    },
     age: {
       label: 'Age',
       value: 30,
