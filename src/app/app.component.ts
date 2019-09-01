@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit  } from '@angular/core';
+
+import { EMPTY } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { PersonService } from './service/person.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public title = 'Create-Dynamic-Forms-In-Angular';
+  public personsService: any;
 
-  public person = {
+    public person = {
     firstname: {
       label: 'FirstName',
       value: 'Kumar',
@@ -30,4 +36,18 @@ export class AppComponent {
       type: 'text'
     }
   };
+
+  // private person = new Object();
+  constructor(private personService: PersonService) { }
+  loadContacts() {
+    // console.log(this.person);
+    this.personService.getPersonForm().subscribe(data => {
+        this.personsService = data;
+        console.log(this.personsService);
+    });
+  }
+
+  ngOnInit() {
+    this.loadContacts();
+  }
 }
